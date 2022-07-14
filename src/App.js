@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import {BrowserRouter, Route, Routes, Navigate, useParams, NavLink} from 'react-router-dom';
-import Home from "./components/HomeContainer"
-import Organization from "./components/OrganizationContainer"
-import Filing from "./components/FilingContainer"
-import Award from "./components/AwardContainer"
+import Home from "./components/HomeContainer";
+import Organization from "./components/OrganizationContainer";
+import Filing from "./components/FilingContainer";
+import Award from "./components/AwardContainer";
+import OrganizationShow from './components/OrganizationShowContainer';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
-import theme from './theme'
+import theme from './theme';
+import styles from "./custom-style.css";
 
 const App = () => {
   return(
@@ -16,6 +18,7 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/organizations" element={<Organization/>}/>
+            <Route exact path="/organizations/:id" element={<OrganizationShow/>}/>
             <Route exact path="/filings" element={<Filing/>}/>
             <Route exact path="/awards" element={<Award/>}/>
           </Routes>
@@ -29,11 +32,11 @@ export default App;
 
 function NavBar(){
   return(
-    <div>
-      <NavLink to="/">Home</NavLink>
+    <div className='navBar'>
+      <NavLink to="/">Home</NavLink>| 
       <NavLink to="/organizations">Organizations</NavLink>
-      <NavLink to="/filings">Filings</NavLink>
-      <NavLink to="/awards">Awards</NavLink>
+      {/* <NavLink to="/filings">Filings</NavLink>| 
+      <NavLink to="/awards">Awards</NavLink> */}
     </div>
   )
 }
