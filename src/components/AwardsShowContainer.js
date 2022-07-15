@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import DbServices from "../services/db-service";
 const API_URL = DbServices.getBaseUrl();
 
+// award show page
+
 const Award = () => {
   const [award, setAward] = useState([]);
   const [receiver, setReceiver] = useState([]);

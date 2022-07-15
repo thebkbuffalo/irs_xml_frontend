@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import DbServices from "../services/db-service";
 const API_URL = DbServices.getBaseUrl();
 
+// organization show page that displays either filings or awards depending on whether said org is a filer or receiver 
+
 const OrganizationShow = () => {
   const [org, setOrg] = useState([]);
   const [addresses, setAddresses] = useState([]);

@@ -10,6 +10,8 @@ import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 const API_URL = DbServices.getBaseUrl();
 
+// Super basic little dashboard / home page type of thing. quick little overview of the most recently created objects
+
 const Home = () => {
   const [orgs, setOrgs] = useState([]);
   const [filings, setFilings] = useState([]);

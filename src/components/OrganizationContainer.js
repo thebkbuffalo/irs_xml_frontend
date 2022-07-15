@@ -13,6 +13,8 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 const API_URL = DbServices.getBaseUrl();
 
+// list of organizations broken down by filer and receiver. each org links to a show page with more info / data
+
 const Organization = () => {
   const [receiverOrgs, setReceiverOrgs] = useState([]);
   const [filerOrgs, setFilerOrgs] = useState([]);
