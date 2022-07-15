@@ -50,9 +50,9 @@ const Home = () => {
               {filings.map((filing, index)=>
                 <>
                   <ListItem key={index}>{filing.org_name}</ListItem>
-                  <ListItem key={index}>{filing.tax_period}</ListItem> 
-                  <ListItem key={index}>{filing.awards_count}</ListItem> 
-                  <ListItem key={index}>{filing.total_amount_given}</ListItem>
+                  <ListItem key={index}>Tax Period - {filing.tax_period}</ListItem> 
+                  <ListItem key={index}>Awards Count - {filing.awards_count}</ListItem> 
+                  <ListItem key={index}>Total Amount Given - {filing.total_amount_given}</ListItem>
                   <Divider/> 
                 </>
               )}
@@ -65,9 +65,9 @@ const Home = () => {
             <List>
               {awards.map((award, index)=>
                 <>
-                  <ListItem key={index}>{award.receiver_name}</ListItem>
-                  <ListItem key={index}>{award.cash_amount}</ListItem>
-                  <ListItem key={index}>{award.purpose}</ListItem>
+                  <ListItem key={index}>Receiver - {award.receiver_name}</ListItem>
+                  <ListItem key={index}>Amount - {award.cash_amount}</ListItem>
+                  <ListItem key={index}>Purpose - {award.purpose}</ListItem>
                   <Divider/>
                 </>
               )}

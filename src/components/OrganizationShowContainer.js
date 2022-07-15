@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import List from '@mui/material/List';
@@ -19,9 +20,11 @@ const OrganizationShow = () => {
   const [addresses, setAddresses] = useState([]);
   const [filings, setFilings] = useState([]);
   const [awards, setAwards] = useState([]);
+  const [orgId, setOrgId] = useState('');
   useEffect(()=> {
-    let orgId = window.location.pathname.split('/').pop();
-    axios.get(API_URL+'api/organizations/'+orgId+'.json').then(resp=>{
+    let organizationId = window.location.pathname.split('/').pop();
+    setOrgId(organizationId);
+    axios.get(API_URL+'api/organizations/'+organizationId+'.json').then(resp=>{
       setOrg(resp.data);
       setAddresses(resp.data.addresses);
       setFilings(resp.data.filings);
@@ -39,7 +42,6 @@ const OrganizationShow = () => {
     <div className='orgShowContainer'>
       <Typography variant='h4'>Organization: {org.name}</Typography>
       {isFiler() ? (<Typography variant='h5'>Filer</Typography>) : (<Typography variant='h5'>Grant Receiver</Typography>)}
-
       <Typography variant='h5'></Typography>
       <Grid container direction='row' justifyContent='left' alignItems='center'>
         <Card sx={{width: '30%', height: 200, overflow: 'auto'}} variant="outlined">
@@ -64,6 +66,7 @@ const OrganizationShow = () => {
             <Table sx={{width: '100%'}} aria-label='simple table'>
               <TableHead>
                 <TableRow>
+                  <TableCell>Link</TableCell>
                   <TableCell>Tax Period</TableCell>
                   <TableCell>XML URL</TableCell>
                   <TableCell>Awards Given</TableCell>
@@ -72,12 +75,13 @@ const OrganizationShow = () => {
               </TableHead>
               <TableBody>
                 {filings.map((filing, index) => 
-                  <TableRow key={index}>
-                    <TableCell>{filing.tax_period}</TableCell>
-                    <TableCell>{filing.xml_url}</TableCell>
-                    <TableCell>{filing.awards_count}</TableCell>
-                    <TableCell>{filing.total_amount_given}</TableCell>
-                  </TableRow>
+                    <TableRow key={index}>
+                      <TableCell><Link to={"/filings/"+filing.id+"?org_id="+orgId}>Filing ID {filing.id}</Link></TableCell>
+                      <TableCell>{filing.tax_period}</TableCell>
+                      <TableCell>{filing.xml_url}</TableCell>
+                      <TableCell>{filing.awards_count}</TableCell>
+                      <TableCell>{filing.total_amount_given}</TableCell>
+                    </TableRow>
                 )}
               </TableBody>
             </Table>

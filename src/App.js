@@ -5,6 +5,7 @@ import Organization from "./components/OrganizationContainer";
 import Filing from "./components/FilingContainer";
 import Award from "./components/AwardContainer";
 import OrganizationShow from './components/OrganizationShowContainer';
+import FilingShow from './components/FilingShowContainer';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import theme from './theme';
 import styles from "./custom-style.css";
@@ -19,7 +20,7 @@ const App = () => {
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/organizations" element={<Organization/>}/>
             <Route exact path="/organizations/:id" element={<OrganizationShow/>}/>
-            <Route exact path="/filings" element={<Filing/>}/>
+            <Route exact path="/filings/:id" element={<FilingShow/>}/>
             <Route exact path="/awards" element={<Award/>}/>
           </Routes>
         </Fragment>
