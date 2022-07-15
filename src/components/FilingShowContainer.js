@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import Card from '@mui/material/Card';
 import List from '@mui/material/List';
 import Grid from '@mui/material/Grid';
@@ -20,9 +21,13 @@ const FilingShow = () => {
   const [filing, setFiling] = useState([]);
   const [org, setOrg] = useState([]);
   const [awards, setAwards] = useState([]);
+  const [orgId, setOrgId] = useState('');
+  const [filingId, setFilingId] = useState('');
   useEffect(() => {
     let filingId = window.location.pathname.split('/').pop();
+    setFilingId(filingId);
     let orgId = window.location.search.split('=').pop();
+    setOrgId(orgId);
     axios.get(API_URL+'api/organizations/'+orgId+'/filings/'+filingId+'.json').then(resp=>{
       setFiling(resp.data);
       setOrg(resp.data.organization);
@@ -54,6 +59,7 @@ const FilingShow = () => {
             <Table sx={{width: '100%'}} aria-label='simple table'>
               <TableHead>
                 <TableRow>
+                  <TableCell>Link</TableCell>
                   <TableCell>Purpose</TableCell>
                   <TableCell>IRS Section</TableCell>
                   <TableCell>Cash Amount</TableCell>
@@ -63,6 +69,7 @@ const FilingShow = () => {
               <TableBody>
                 {awards.map((award, index) => 
                   <TableRow key={index}>
+                    <TableCell><Link to={"/awards/"+award.id+"?org_id="+orgId+"&filing_id="+award.filing_id+".json"}>Link to Award {award.id}</Link></TableCell>
                     <TableCell>{award.purpose}</TableCell>
                     <TableCell>{award.irs_section}</TableCell>
                     <TableCell>{award.cash_amount}</TableCell>
