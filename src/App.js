@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes, Navigate, useParams, NavLink} from 'react-
 import Home from "./components/HomeContainer";
 import Organization from "./components/OrganizationContainer";
 import Filing from "./components/FilingContainer";
-import Award from "./components/AwardContainer";
+import AwardsShow from "./components/AwardsShowContainer";
 import OrganizationShow from './components/OrganizationShowContainer';
 import FilingShow from './components/FilingShowContainer';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
@@ -21,7 +21,7 @@ const App = () => {
             <Route exact path="/organizations" element={<Organization/>}/>
             <Route exact path="/organizations/:id" element={<OrganizationShow/>}/>
             <Route exact path="/filings/:id" element={<FilingShow/>}/>
-            <Route exact path="/awards" element={<Award/>}/>
+            <Route exact path="/awards/:id" element={<AwardsShow/>}/>
           </Routes>
         </Fragment>
       </ThemeProvider>

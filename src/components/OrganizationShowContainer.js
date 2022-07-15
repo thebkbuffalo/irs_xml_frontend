@@ -92,6 +92,7 @@ const OrganizationShow = () => {
             <Table sx={{width: '100%'}} aria-label='simple table'>
               <TableHead>
                 <TableRow>
+                  <TableCell>Link</TableCell>
                   <TableCell>Purpose</TableCell>
                   <TableCell>IRS Section</TableCell>
                   <TableCell>Cash Amount</TableCell>
@@ -101,6 +102,7 @@ const OrganizationShow = () => {
               <TableBody>
                 {awards.map((award, index) => 
                   <TableRow key={index}>
+                    <TableCell><Link to={"/awards/"+award.id+"?org_id="+orgId+"&filing_id="+award.filing_id+".json"}>Link ID {award.id}</Link></TableCell>
                     <TableCell>{award.purpose}</TableCell>
                     <TableCell>{award.irs_section}</TableCell>
                     <TableCell>{award.cash_amount}</TableCell>
